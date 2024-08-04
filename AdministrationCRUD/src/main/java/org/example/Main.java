@@ -9,8 +9,9 @@ public class Main {
     public static void main(String[] args) {
         ConnectionDB.openConnection();
         CoderController coderController = new CoderController();
-        coderController.create();
+        //coderController.create();
         //coderController.delete();
+        coderController.readyByCohorte();
 
     }
 }

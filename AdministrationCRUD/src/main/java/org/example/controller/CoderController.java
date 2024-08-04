@@ -4,6 +4,7 @@ import org.example.entities.Coder;
 import org.example.model.CoderModel;
 
 import javax.swing.*;
+import java.util.List;
 
 public class CoderController {
     CoderModel coderModel;
@@ -26,5 +27,14 @@ public class CoderController {
     public void delete(){
         int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cedula  del Coder "));
         this.coderModel.delete(id);
+
+    }
+    public List<Coder> readyByCohorte(){
+        int cohorte = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el cohorte"));
+        List<Coder> coders= this.coderModel.readByCohorte(cohorte);
+        for(Coder coder:coders){
+            JOptionPane.showMessageDialog(null,coder.toString());
+        }
+        return coders;
     }
 }

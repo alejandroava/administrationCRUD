@@ -5,8 +5,8 @@ import org.example.persistence.CRUD.*;
 
 public interface IModelCoder extends
         CreateModel<Coder>,
-        ReadByClan<String>,
-        ReadByCohorte<String>,
+        ReadByClan<Coder>,
+        ReadByCohorte<Coder>,
         UpdateModel<Coder>,
-        DeleteModel<Integer> {
+        DeleteModel<Coder> {
 }

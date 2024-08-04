@@ -5,16 +5,16 @@ public class Vacant {
     private int id;
     private String title;
     private String description;
-    private String technologyId;
+    private String companyId;
 
     //constructor
     public Vacant(){}
 
-    public Vacant(int id, String title, String description, String technologyId) {
+    public Vacant(int id, String title, String description, String companyId) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.technologyId = technologyId;
+        this.companyId = companyId;
     }
 
     //getters
@@ -32,7 +32,7 @@ public class Vacant {
     }
 
     public String getTechnologyId() {
-        return technologyId;
+        return companyId;
     }
     //setters
 
@@ -48,8 +48,8 @@ public class Vacant {
         this.description = description;
     }
 
-    public void setTechnologyId(String technologyId) {
-        this.technologyId = technologyId;
+    public void setTechnologyId(String companyId) {
+        this.companyId = companyId;
     }
     //tostring
 
@@ -59,7 +59,7 @@ public class Vacant {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", technologyId='" + technologyId + '\'' +
+                ", companyId='" + companyId + '\'' +
                 '}';
     }
 }
