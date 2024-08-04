@@ -131,7 +131,7 @@ public class CoderModel implements IModelCoder {
                             result.getString("clan"),
                             result.getInt("cohorte"));
                     codersByClan.add(coder);
-                    JOptionPane.showMessageDialog(null,coder);
+                    //JOptionPane.showMessageDialog(null,coder);
                 }
                 preparedStatement.close();
                 connection.close();

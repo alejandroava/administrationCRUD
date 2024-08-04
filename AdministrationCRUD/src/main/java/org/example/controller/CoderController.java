@@ -51,9 +51,11 @@ public class CoderController {
     public List<Coder> readyByClan(){
         String clan = (JOptionPane.showInputDialog("Ingrese el clan"));
         List<Coder> coders= this.coderModel.readByClan(clan);
-        for(Coder coder:coders){
-            JOptionPane.showMessageDialog(null,coder.toString());
-        }
+        JOptionPane.showMessageDialog(null,coders.toString());
+        //for(Coder coder:coders){
+            //JOptionPane.showMessageDialog(null,coders.toString());
         return coders;
+        }
+
     }
-}
+

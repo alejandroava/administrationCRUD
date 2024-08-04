@@ -102,6 +102,6 @@ public class Coder {
                 ", technology='" + technology + '\'' +
                 ", clan='" + clan + '\'' +
                 ", cohorte=" + cohorte +
-                '}';
+                "}\n";
     }
 }
