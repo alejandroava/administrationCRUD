@@ -88,11 +88,56 @@ public class CoderModel implements IModelCoder {
 
     @Override
     public Coder updateModel(Coder request, int id) {
+        Connection connection = ConnectionDB.openConnection();
+        Coder coder;
+        try {
+            String sqlQuery = "UPDATE Coder SET name=?,lastname=?,cc=?,technology=?,clan=?,cohorte=? WHERE cc=?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+            preparedStatement.setString(1,request.getName());
+            preparedStatement.setString(2,request.getLastname());
+            preparedStatement.setInt(3,request.getCc());
+            preparedStatement.setString(4,request.getTechnology());
+            preparedStatement.setString(5,request.getClan());
+            preparedStatement.setInt(6,request.getCohorte());
+            preparedStatement.setInt(7,id);
+
+            int rowAffected = preparedStatement.executeUpdate();
+            if(rowAffected == 1){
+                return request;
+            }
+            preparedStatement.close();
+            connection.close();
+
+        } catch (SQLException error){
+            throw new RuntimeException(error.getMessage());
+        }
         return null;
     }
 
     @Override
-    public List<Coder> readByClan(Coder clan) {
-        return List.of();
+    public List<Coder> readByClan(String clan) {
+            Connection connection = ConnectionDB.openConnection();
+            List<Coder> codersByClan=new ArrayList<>();
+            try{
+                String sqlQuery = "SELECT * FROM Coder WHERE clan=?;";
+                PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+                preparedStatement.setString(1,clan);
+                ResultSet result = preparedStatement.executeQuery();
+                while(result.next()){
+                    Coder coder = new Coder(result.getString("name"),
+                            result.getString("lastname"),
+                            result.getInt("cc"),
+                            result.getString("technology"),
+                            result.getString("clan"),
+                            result.getInt("cohorte"));
+                    codersByClan.add(coder);
+                    JOptionPane.showMessageDialog(null,coder);
+                }
+                preparedStatement.close();
+                connection.close();
+            }catch (SQLException error){
+                throw new RuntimeException();
+            }
+        return codersByClan;
     }
 }
